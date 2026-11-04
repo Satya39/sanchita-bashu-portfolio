@@ -66,6 +66,14 @@ src/
 public/images/  her photographs (web copies; swap for originals)
 ```
 
-## Deploy
+## Deploy (Render)
 
-`npm run build` produces a static `dist/` folder. Deploy to Vercel, Netlify, Cloudflare Pages or any static host. Before launch: add the real email, an `og:image` once the hero portrait is final, and confirm the verify-list above.
+The site is a static build, hosted on Render as a **Static Site** from the GitHub repo `sat4spd/sanchita-bashu-portfolio` (branch `main`).
+
+- Build command: `npm ci && npm run build`
+- Publish directory: `dist`
+- Auto-deploy: every push to `main`
+
+To redeploy, push to `main`. To change the domain, add a custom domain in the Render dashboard and point a CNAME at the `.onrender.com` host. Before launch: add the real email, confirm the verify-list above, and replace the Instagram web copies with original photography.
+
+Screenshots for sharing live in `docs/screenshots/`; an email draft for the client is in `docs/share-email.md`.
