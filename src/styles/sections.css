@@ -1,0 +1,344 @@
+/* =========================================================
+   Layering: ambient canvas sits behind everything
+   ========================================================= */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+main,
+footer.contact,
+.nav,
+.menu {
+  position: relative;
+  z-index: 1;
+}
+.nav,
+.menu {
+  position: fixed;
+}
+.hero-marquee {
+  background: rgba(10, 9, 8, 0.55);
+  backdrop-filter: blur(2px);
+}
+.work {
+  background: rgba(18, 15, 13, 0.72);
+}
+.contact {
+  background: rgba(18, 15, 13, 0.8);
+}
+
+/* =========================================================
+   Film strip
+   ========================================================= */
+.strip {
+  position: relative;
+  padding: clamp(48px, 7vw, 120px) 0;
+  overflow: hidden;
+}
+.strip-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 28px);
+  transform-origin: center;
+  will-change: transform;
+}
+html {
+  overflow-x: clip;
+}
+.strip-row {
+  display: flex;
+  width: max-content;
+  gap: clamp(14px, 2vw, 28px);
+  will-change: transform;
+}
+.strip-group {
+  display: flex;
+  gap: clamp(14px, 2vw, 28px);
+  flex-shrink: 0;
+}
+.strip-frame {
+  flex-shrink: 0;
+  width: clamp(150px, 16vw, 260px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid rgba(239, 233, 223, 0.08);
+  transition: transform 0.9s var(--ease-expo), filter 0.9s var(--ease-expo);
+  filter: saturate(0.92) brightness(0.92);
+}
+.strip-frame:hover {
+  transform: scale(1.04);
+  filter: saturate(1) brightness(1.02);
+}
+.strip-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================================
+   Spotlight (Thukra Ke Mera Pyaar)
+   ========================================================= */
+.spotlight {
+  overflow: hidden;
+}
+.spot-bg {
+  position: absolute;
+  top: 4vw;
+  left: 0;
+  font-size: clamp(140px, 30vw, 460px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(239, 233, 223, 0.14);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+.spot-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(32px, 7vw, 140px);
+  align-items: start;
+}
+.spot-media {
+  position: relative;
+  max-width: 520px;
+}
+.spot-img {
+  aspect-ratio: 9 / 16;
+  box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.9);
+}
+.spot-frame {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(200, 168, 107, 0.5);
+  pointer-events: none;
+  z-index: -1;
+}
+.spot-watch {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--accent);
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(200, 168, 107, 0.4);
+}
+.spot-copy > .eyebrow {
+  margin-bottom: 28px;
+}
+.spot-title {
+  font-size: clamp(48px, 7vw, 120px);
+}
+.spot-sub {
+  font-size: clamp(22px, 2.2vw, 34px);
+  color: var(--accent);
+  margin: 10px 0 36px;
+}
+.spot-para {
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 58ch;
+  margin-bottom: 20px;
+}
+.spot-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 32px;
+  margin-top: 48px;
+}
+.spot-fact {
+  position: relative;
+  padding: 18px 0;
+  --line-scale: 0;
+}
+.spot-fact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ink-3);
+  transform: scaleX(var(--line-scale));
+  transform-origin: left;
+}
+.spot-fact dt {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+.spot-fact dd {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* =========================================================
+   Facts dossier
+   ========================================================= */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  perspective: 1200px;
+}
+.fact-card {
+  padding: 24px 22px 26px;
+  border: 1px solid var(--line);
+  background: rgba(18, 15, 13, 0.55);
+  backdrop-filter: blur(6px);
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  transition: border-color 0.6s var(--ease-expo), transform 0.6s var(--ease-expo);
+  transform-style: preserve-3d;
+}
+.fact-card:hover {
+  border-color: rgba(200, 168, 107, 0.5);
+  transform: translateY(-4px);
+}
+.fact-card p {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.6vw, 26px);
+  line-height: 1.2;
+}
+.fact-card p.devanagari {
+  font-size: clamp(24px, 2vw, 32px);
+  color: var(--accent);
+}
+
+/* =========================================================
+   Mobile pass
+   ========================================================= */
+@media (max-width: 1100px) {
+  .facts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 899px) {
+  .spot-grid {
+    grid-template-columns: 1fr;
+  }
+  .spot-media {
+    max-width: 360px;
+  }
+  .spot-bg {
+    font-size: 36vw;
+    top: 10px;
+  }
+  .spot-facts {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 719px) {
+  .facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .fact-card {
+    padding: 18px 16px 20px;
+    min-height: 120px;
+  }
+  .strip-frame {
+    width: 42vw;
+  }
+  .section {
+    padding-block: clamp(72px, 16vw, 120px);
+  }
+  .section-head h2 {
+    font-size: clamp(40px, 13vw, 72px);
+  }
+  .about-title {
+    font-size: clamp(34px, 9.5vw, 56px);
+  }
+  .about-para {
+    font-size: 16px;
+  }
+  .stats {
+    gap: 18px 12px;
+    margin-top: 48px;
+  }
+  .stat-value {
+    font-size: 40px;
+  }
+  .journey-body h3 {
+    font-size: 24px;
+  }
+  .journey-quote-text {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+  .film-card {
+    max-width: none;
+  }
+  .film-meta h3 {
+    font-size: 30px;
+  }
+  .reel-frame {
+    clip-path: inset(0 0 0 0 round 0);
+    width: 100%;
+  }
+  .reel-title {
+    font-size: 22vw;
+  }
+  .press-text {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+  .contact-title {
+    font-size: clamp(40px, 12vw, 64px);
+    max-width: none;
+  }
+  .contact-cta {
+    width: 100%;
+    font-size: 22px;
+    padding: 22px 28px;
+  }
+  .contact-meta {
+    width: 100%;
+  }
+  .menu {
+    padding: 96px var(--gutter) 32px;
+    justify-content: space-between;
+  }
+  .menu-link {
+    font-size: clamp(34px, 10vw, 56px);
+    line-height: 1.15;
+  }
+  .menu-meta {
+    margin-top: 24px;
+    padding-top: 18px;
+    font-size: 13px;
+  }
+  .lightbox {
+    padding: 4vh 12px;
+  }
+  .lightbox-figure img {
+    max-height: 70vh;
+  }
+  .lightbox-figure figcaption {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .marquee-item {
+    font-size: 26px;
+  }
+  .hero-top-right {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fact-card p {
+    font-size: 18px;
+  }
+}
