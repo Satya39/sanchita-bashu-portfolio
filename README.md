@@ -68,7 +68,7 @@ public/images/  her photographs (web copies; swap for originals)
 
 ## Deploy (Render)
 
-The site is a static build, hosted on Render as a **Static Site** from the GitHub repo `sat4spd/sanchita-bashu-portfolio` (branch `main`).
+The site is a static build, hosted on Render as a **Static Site** at https://sanchita-bashu.onrender.com from the GitHub repo `Satya39/sanchita-bashu-portfolio` (branch `main`).
 
 - Build command: `npm ci && npm run build`
 - Publish directory: `dist`

@@ -6,7 +6,7 @@ Hi Sanchita,
 
 I've put together the first version of your official portfolio website and would love your thoughts.
 
-**Preview link:** `<LIVE_URL>`
+**Preview link:** https://sanchita-bashu.onrender.com
 (Best experienced on a laptop with sound on for the showreel; it also works fully on phones.)
 
 **What's on it**
